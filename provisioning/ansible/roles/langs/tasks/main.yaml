@@ -1,9 +1,9 @@
 ---
-- name: Install Rust
+- name: Install Rust v1.46.0
   become: yes
   become_user: isucon
   shell: | 
-      curl https://sh.rustup.rs -sSf | sh -s -- -y
+      curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain 1.46.0
 - name: Add PATH for Rust
   become: yes
   become_user: isucon
@@ -12,11 +12,6 @@
     path: /home/isucon/.bashrc
     content: |
       export PATH=/home/isucon/.cargo/bin:$PATH
-
-- name: Update v1.46.0(stable)
-  become: yes
-  become_user: isucon
-  command: /home/isucon/.cargo/bin/rustup update stable
 
 - name: Install Deno v1.3.2
   become: yes
